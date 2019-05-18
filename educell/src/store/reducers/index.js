@@ -3,10 +3,14 @@ const initialState = {
     schools: [],
     isLoggedIn: false,
     isLoggingIn: false,
+    error: null,
+    
 };
 
-const reducer = () => {
+const reducer = (state = initialState, action) => {
+    switch(action.type){
 
+    }
 };
 
 export default reducer;
