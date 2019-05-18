@@ -7,7 +7,6 @@ const Bar = styled.div`
 `
 
 const StyleDiv = styled.div`
-    border: 1px solid red;
     height: 100vh;
 `
 
