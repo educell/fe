@@ -29,7 +29,7 @@ const NavBar = () => {
             <NavList>
                 <NavLink exact to='/'>Home</NavLink> 
                 <NavLink to="/login">Log In</NavLink> {/* NavLinks be here and next line later */}
-                <NavItem>Create an Account</NavItem>
+                <NavLink to='/createUser'>Create an Account</NavLink>
             </NavList>
         </Nav>    
     )
