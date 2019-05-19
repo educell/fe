@@ -27,9 +27,15 @@ const NavBar = () => {
         <Nav>
             <Empty></Empty>
             <NavList>
-                <NavLink exact to='/'>Home</NavLink> 
-                <NavLink to="/login">Log In</NavLink> {/* NavLinks be here and next line later */}
-                <NavLink to='/createUser'>Create an Account</NavLink>
+                <NavItem>
+                    <NavLink exact to='/'>Home</NavLink>
+                </NavItem> 
+                <NavItem>
+                    <NavLink to="/login">Log In</NavLink> {/* NavLinks be here and next line later */}
+                </NavItem>
+                <NavItem>
+                    <NavLink to='/createUser'>Create an Account</NavLink>
+                </NavItem>
             </NavList>
         </Nav>    
     )
