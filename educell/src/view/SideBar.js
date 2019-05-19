@@ -7,7 +7,7 @@ const Bar = styled.div`
 `
 
 const StyleDiv = styled.div`
-    height: 100vh;
+  height: 91vh;
 `
 
 const Title = styled.div`
