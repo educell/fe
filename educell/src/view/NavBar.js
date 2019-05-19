@@ -31,7 +31,7 @@ const NavBar = () => {
                     <NavLink exact to='/'>Home</NavLink>
                 </NavItem> 
                 <NavItem>
-                    <NavLink to="/login">Log In</NavLink> {/* NavLinks be here and next line later */}
+                    <NavLink to="/login">Login</NavLink> {/* NavLinks be here and next line later */}
                 </NavItem>
                 <NavItem>
                     <NavLink to='/createUser'>Create an Account</NavLink>
