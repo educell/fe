@@ -6,10 +6,9 @@ const FormDiv = styled.div`
     border: 1px solid red;
     width: 20%;
     border-radius: 10px;
-    position: relative;
-    left: 700px;
-    top: 300px;
-    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 
 `
 
@@ -17,9 +16,14 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     width: 50%;
-    justify-content: center;
-    align-items: center;
     margin: 20px auto;
+`
+
+const Button = styled.button`
+    width: 40%;
+    border-radius: 75px;
+    color: white;
+    background-color: #D67E8D;
 `
 
 class Login extends React.Component {
@@ -42,15 +46,21 @@ class Login extends React.Component {
         })
     }
 
+    loginUser = e => {
+        e.preventDefault();
+    }
+
     render(){
         return(
-            <FormDiv>
-                <Form onSubmit={null}>
+            <div>
+                <Form onSubmit={this.loginUser}>
+                    <h3>USERNAME</h3>
                     <input onChange={this.handleChanges} name="username" type="text" placeholder="Enter Username" value={this.state.credentials.username} />
+                    <h3>Password</h3>
                     <input onChange={this.handleChanges} name="password" type="password" placeholder="Enter Password" value={this.state.credentials.password} />
-                    <button>Log In</button>
+                    <Button>Log In</Button>
                 </Form>
-            </FormDiv>
+            </div>
         )
     }
 }
