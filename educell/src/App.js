@@ -11,19 +11,13 @@ import PrivateRoute from './components/login pages/PrivateRoute';
 
 import './App.css';
 
-const SideDiv = styled.div`
-  height: 100vh;
-  border: 1px solid red;
-`
-
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
       <Route exact path='/' component={Home} />
       <Route path='/login' component={Login} />
-      <Route path='/createUser' component={NewUser} />
+      <Route path='/newUser' component={NewUser} />
       <PrivateRoute exact path='/dashboard' component={DashBoard} />
     </div>
   );
