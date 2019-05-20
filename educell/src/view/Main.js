@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Writing1 = styled.h1`
-    background-color: black;
+    background-color: #31363E;
     color: white;
     font-size: 96px;
     padding: 10px;
@@ -12,7 +12,7 @@ const Writing1 = styled.h1`
 `
 
 const Writing2 = styled.h1`
-    background-color: black;
+    background-color: #31363E;
     color: white;
     font-size: 96px;
     padding: 10px;
@@ -22,7 +22,7 @@ const Writing2 = styled.h1`
 `
 
 const Writing3 = styled.h1`
-    background-color: black;
+    background-color: #31363E;
     color: white;
     font-size: 96px;
     padding: 10px;
