@@ -58,8 +58,8 @@ class Login extends React.Component {
         e.preventDefault();
         this.props.login(this.state.credentials)
         .then(() => {
-            this.props.history.push("/dashboard");
-        });
+            this.props.history.push('/dashoboard');
+        })
     };
 
     render(){

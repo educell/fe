@@ -63,15 +63,8 @@ class NewUser extends React.Component {
         super();
         this.state = {
             userInfo: {  
-                first: '',
-                last: '',
-                email: '',
-                phone: '',
-                invite: '',
-                school: '',
                 username: '',
                 password: '',
-                confirm: '',
             }
         }
     }
@@ -116,49 +109,16 @@ class NewUser extends React.Component {
                         <form onSubmit={this.newUser}>
                             <InputDiv>
                                 <div>
-                                    <h3>First Name</h3>
-                                    <Input onChange={this.changeHandler} name="first" placeholder="First Name" value={this.state.userInfo.first} />
-                                </div>
-                                <div>
-                                    <h3>Last Name</h3>
-                                    <Input onChange={this.changeHandler} name="last" placeholder="Last Name" value={this.state.userInfo.last} />
-                                </div>
-                            </InputDiv>
-                            <InputDiv>
-                                <div>
-                                    <h3>Email</h3>
-                                    <Input onChange={this.changeHandler} name="email" placeholder="email@email.com" value={this.state.userInfo.email} />
-                                </div>
-                                <div>
-                                    <h3>Phone Number</h3>
-                                    <Input onChange={this.changeHandler} name="phone" type="tel" placeholder="(000) 000-0000" value={this.state.userInfo.phone} />
-                                </div>
-                            </InputDiv>
-                            <InputDiv>
-                                <div>
-                                    <h3>Invite Code</h3>
-                                    <Input onChange={this.changeHandler} name="invite" placeholder="AC7-8H4U" value={this.state.userInfo.invite} />
-                                </div>
-                                <div>
-                                    <h3>School</h3>
-                                    <Input onChange={this.changeHandler} name="school" placeholder="School" value={this.state.userInfo.school} />
-                                </div>
-                            </InputDiv>
-                            <InputDiv>
-                                <div>
                                     <h3>Username</h3>
-                                    <Input onChange={this.changeHandler} name="username" placeholder="Username" value={this.state.userInfo.username} />
+                                    <Input required onChange={this.changeHandler} name="username" placeholder="Username" value={this.state.userInfo.username} />
                                 </div>
                             </InputDiv>
                             <InputDiv>
                                 <div>
                                     <h3>Password</h3>
-                                    <Input onChange={this.changeHandler} name="password" type="password" placeholder="********" value={this.state.userInfo.password}  />
+                                    <Input required onChange={this.changeHandler} name="password" type="password" placeholder="********" value={this.state.userInfo.password}  />
                                 </div>
-                                <div>
-                                    <h3>Confirm Password</h3>
-                                    <Input onChange={this.changeHandler} name="confirm" type="password" placeholder="*******" value={this.state.userInfo.confirm} />
-                                </div>
+                                
                             </InputDiv>
                             <Button>Sign Up</Button>
                         </form>
