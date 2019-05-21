@@ -1,16 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { login } from '../../store/actions';
 
-
-const FormDiv = styled.div`
-    border: 1px solid red;
-    width: 20%;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-
-`
 
 const Form = styled.form`
     display: flex;
@@ -53,9 +45,10 @@ class Login extends React.Component {
     }
 
     handleChanges = e => {
-        console.log(e.target.name, e.target.value)
+        console.log(e.target.name, e.target.value);
         this.setState({
             credentials: {
+                ...this.state.credentials,
                 [e.target.name]: e.target.value,
             }
         })
@@ -63,7 +56,11 @@ class Login extends React.Component {
 
     loginUser = e => {
         e.preventDefault();
-    }
+        this.props.login(this.state.credentials)
+        .then(() => {
+            this.props.history.push("/dashboard");
+        });
+    };
 
     render(){
         return(
@@ -80,4 +77,8 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+    isLoggedIn: state.isLoggedIn,
+})
+
+export default connect(mapStateToProps, { login })(Login);

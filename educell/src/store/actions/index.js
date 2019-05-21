@@ -9,3 +9,13 @@ export const login = creds => dispatch => {
         .then(res => console.log(res))
         .catch(err => console.log(err));
 }
+
+export const SIGN_UP_START = 'SIGN_UP_START';
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+export const signUp = info => dispatch => {
+    dispatch({ type: SIGN_UP_START });
+    return axios.post('https://edu-cell.herokuapp.com/api/auth/register', info)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+}

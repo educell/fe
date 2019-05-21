@@ -1,8 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import styled from 'styled-components';
 
-import NavBar from './view/NavBar';
 import Login from './components/login pages/Login';
 import Home from './view/Home';
 import NewUser from './components/login pages/NewUser';
