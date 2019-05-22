@@ -1,5 +1,7 @@
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions';
 import { SIGN_UP_START, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from '../actions';
+import { FETCH_SCHOOLS_START, FETCH_SCHOOLS_SUCCESS, FETCH_SCHOOLS_FAILURE } from '../actions';
+import { FETCH_STUDENT_START, FETCH_STUDENT_SUCCESS, FETCH_STUDENT_FAILURE } from '../actions';
 
 const initialState = {
     students: [],
@@ -56,6 +58,36 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isLoggingIn: false,
                 isLoggedIn: false,
+                error: action.payload,
+            }
+        case FETCH_SCHOOLS_START:
+            return {
+                ...state,
+                error: '',
+            }
+        case FETCH_SCHOOLS_SUCCESS:
+            return {
+                ...state,
+                schools: action.payload,
+            }
+        case FETCH_SCHOOLS_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+            }
+        case FETCH_STUDENT_START:
+            return {
+                ...state,
+                error: '',
+            }
+        case FETCH_STUDENT_SUCCESS:
+            return {
+                ...state,
+                students: action.payload,
+            }
+        case FETCH_STUDENT_FAILURE:
+            return {
+                ...state,
                 error: action.payload,
             }
         default:
