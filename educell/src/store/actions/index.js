@@ -55,7 +55,9 @@ export const addSchool = info => dispatch => {
             console.log(res);
             dispatch({ type: ADD_SCHOOLS_SUCCESS, payload: res.data })
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            dispatch({ type: ADD_SCHOOLS_FAILURE, payload: err.response })
+        });
 }
 
 export const DELETE_SCHOOLS_START = 'DELETE_SCHOOLS_START';
