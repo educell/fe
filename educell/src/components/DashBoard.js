@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import StudentSearch from './StudentSearch';
 import SchoolList from './SchoolList';
+import Todo from './Todo';
 import small_logo from '../img/small_logo.svg';
 
 const Whole = styled.div`
@@ -60,6 +61,10 @@ class DashBoard extends React.Component {
         }
     }
 
+    signOff = e => {
+        e.preventDefault();
+    }
+
     render(){
         return (
             <Whole>
@@ -69,7 +74,7 @@ class DashBoard extends React.Component {
                     </div>
                     <div>
                         <h1>User</h1>
-                        <h4>Sign Out</h4>
+                        <h4 onClick={this.signOff}>Sign Out</h4>
                     </div>
                     <div>
                         <ul>
@@ -92,7 +97,7 @@ class DashBoard extends React.Component {
                             <StudentSearch />
                         </Student>
                         <ToDo>
-                            {/* todo list here if able to get to it */}
+                            <Todo />
                         </ToDo>
                         <Some>
                             {/* something else would go here? */}
@@ -109,4 +114,4 @@ class DashBoard extends React.Component {
     }
 }
 
-export default DashBoard;
+export default withRouter(DashBoard);
