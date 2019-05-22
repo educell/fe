@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { schoolList, deleteSchool } from '../store/actions';
+import { schoolList, deleteSchool, addSchool } from '../store/actions';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import AddSchool from './AddSchool';
 
 const List = styled.div`
     display: flex;
@@ -25,7 +27,7 @@ class SchoolList extends React.Component {
     constructor(){
         super();
         this.state = {
-            
+            school: '',
         }
         
     }
@@ -34,8 +36,20 @@ class SchoolList extends React.Component {
         this.props.schoolList();
     }
 
+    changeHandler = e => {
+        this.setState({
+            school: e.target.value,
+        })
+    }
+
     deleteSchool = id =>{
         this.props.deleteSchool(id)
+    }
+
+    addSchool = e => {
+        e.preventDefault();
+        this.props.addSchool(this.state.school)
+        .then(() => this.props.history.push('/dashboard'));
     }
 
     render(){
@@ -46,12 +60,12 @@ class SchoolList extends React.Component {
                         return (
                             <div key={school.id}>
                                 <School>{school.name}</School>
-                                <Button>+</Button>
                                 <Button onClick={() => this.deleteSchool(school.id)}>-</Button>
                             </div>
                     )})}
                     
                 </List>
+                <AddSchool changeHandler={this.changeHandler} school={this.state.school} addSchool={this.addSchool} />
             </div>
         )
     }
@@ -61,4 +75,4 @@ const mapStateToProps = state => ({
     schools: state.schools,
 })
 
-export default connect(mapStateToProps, { schoolList, deleteSchool })(SchoolList);
+export default withRouter(connect(mapStateToProps, { schoolList, deleteSchool, addSchool })(SchoolList));
