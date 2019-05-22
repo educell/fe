@@ -63,6 +63,8 @@ class DashBoard extends React.Component {
 
     signOff = e => {
         e.preventDefault();
+        localStorage.removeItem('token');
+        this.props.history.push('/');
     }
 
     render(){
