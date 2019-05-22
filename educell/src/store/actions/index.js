@@ -45,11 +45,24 @@ export const schoolList = () => dispatch => {
         .catch(err => console.log(err));
 }
 
+export const ADD_SCHOOLS_START = 'ADD_SCHOOLS_START';
+export const ADD_SCHOOLS_SUCCESS = 'ADD_SCHOOLS_SUCCESS';
+export const ADD_SCHOOLS_FAILURE = 'ADD_SCHOOLS_FAILURE';
+export const addSchool = info => dispatch => {
+    dispatch({ type: ADD_SCHOOLS_START });
+    return axios.post('https://edu-cell.herokuapp.com/schools', info)
+        .then(res => {
+            console.log(res);
+            dispatch({ type: ADD_SCHOOLS_SUCCESS, payload: res.data })
+        })
+        .catch(err => console.log(err));
+}
+
 export const DELETE_SCHOOLS_START = 'DELETE_SCHOOLS_START';
 export const DELETE_SCHOOLS_SUCCESS = 'DELETE_SCHOOLS_SUCCESS';
 export const DELETE_SCHOOLS_FAILURE = 'DELETE_SCHOOLS_FAILURE';
 export const deleteSchool = id => dispatch => {
-    dispatch({ type: FETCH_SCHOOLS_START });
+    dispatch({ type: DELETE_SCHOOLS_START });
     return axios.get('', id)
         .then(res => {
             dispatch({ type: DELETE_SCHOOLS_SUCCESS, payload: res.data })
@@ -127,3 +140,10 @@ export const addTeacher = info => dispatch => {
         .catch(err => console.log(err));
 }
 
+export const ADD_ITEM = 'ADD_ITEM';
+export const addItem = info => {
+    return {
+        type: ADD_ITEM,
+        payload: info,
+    }
+}
