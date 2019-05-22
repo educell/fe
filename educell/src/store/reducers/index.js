@@ -2,6 +2,7 @@ import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions';
 import { SIGN_UP_START, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from '../actions';
 import { FETCH_SCHOOLS_START, FETCH_SCHOOLS_SUCCESS, FETCH_SCHOOLS_FAILURE } from '../actions';
 import { FETCH_STUDENT_START, FETCH_STUDENT_SUCCESS, FETCH_STUDENT_FAILURE } from '../actions';
+import { ADD_ITEM } from '../actions';
 
 const initialState = {
     students: [],
@@ -12,7 +13,7 @@ const initialState = {
     isLoggedIn: false,
     isLoggingIn: false,
     error: null,
-
+    todo: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -90,6 +91,14 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload,
             }
+            case ADD_ITEM:
+                return {
+                    ...state,
+                    todo: [
+                        ...state.todo,
+                        {task: action.payload, completed: false, id: Date.now()}
+                    ]
+                }
         default:
             return state;
     }
