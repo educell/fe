@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../store/actions';
 
@@ -34,14 +35,18 @@ const Input = styled.input`
 `
 
 class Login extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             credentials: {
                 username: '',
                 password: '',
             }
         }
+    }
+
+    componentDidMount(){
+        console.log(this.props)
     }
 
     handleChanges = e => {
@@ -55,18 +60,17 @@ class Login extends React.Component {
     }
 
     loginUser = e => {
+        console.log(this.props)
         e.preventDefault();
         this.props.login(this.state.credentials)
-        .then(() => {
-            this.props.history.push('/dashoboard');
-        })
+        .then(() => this.props.history.push('/dashboard'))
     };
 
     render(){
         return(
             <div>
                 <Form onSubmit={this.loginUser}>
-                    <Descp>USERNAME</Descp>
+                    <Descp>Username</Descp>
                     <Input onChange={this.handleChanges} name="username" type="text" placeholder="Enter Username" value={this.state.credentials.username} />
                     <Descp>Password</Descp>
                     <Input onChange={this.handleChanges} name="password" type="password" placeholder="Enter Password" value={this.state.credentials.password} />
@@ -79,6 +83,7 @@ class Login extends React.Component {
 
 const mapStateToProps = state => ({
     isLoggedIn: state.isLoggedIn,
+    token: state.token,
 })
 
-export default connect(mapStateToProps, { login })(Login);
+export default withRouter(connect(mapStateToProps, { login })(Login));

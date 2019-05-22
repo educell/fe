@@ -10,11 +10,12 @@ import PrivateRoute from './components/login pages/PrivateRoute';
 import './App.css';
 
 
-function App() {
+function App(props) {
+  console.log(props)
   return (
     <div className="App">
       <Route exact path='/' component={Home} />
-      <Route path='/login' component={Login} />
+      <Route path='/login'  component={Login} />
       <Route path='/newUser' component={NewUser} />
       <PrivateRoute exact path='/dashboard' component={DashBoard} />
     </div>
