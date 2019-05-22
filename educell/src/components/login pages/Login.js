@@ -79,7 +79,6 @@ class Login extends React.Component {
 
 const mapStateToProps = state => ({
     isLoggedIn: state.isLoggedIn,
-    token: state.token,
 })
 
 export default withRouter(connect(mapStateToProps, { login })(Login));
