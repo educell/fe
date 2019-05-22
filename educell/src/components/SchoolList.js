@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { schoolList } from '../store/actions';
+import { schoolList, deleteSchool } from '../store/actions';
 import { connect } from 'react-redux';
 
 const List = styled.div`
@@ -10,8 +10,15 @@ const List = styled.div`
 
 const School = styled.h1`
     scroll-direction: horizontal;
-    font-size: 20px;
+    overflow: scroll;
+    font-size: 24px;
     margin: auto 5px;
+`
+
+const Button = styled.button`
+    width: 30px;
+    font-size: 20px;
+    margin: 5px 5px;
 `
 
 class SchoolList extends React.Component {
@@ -25,16 +32,27 @@ class SchoolList extends React.Component {
 
     componentDidMount(){
         this.props.schoolList();
-        console.log(this.props);
+    }
+
+    deleteSchool = id =>{
+        this.props.deleteSchool(id)
     }
 
     render(){
         return(
-            <List>
-                {this.props.schools.map(school => {
-                    return <School key={school.id}>{school.name}</School>
-                })}
-            </List>
+            <div>
+                <List>
+                    {this.props.schools.map(school => {
+                        return (
+                            <div key={school.id}>
+                                <School>{school.name}</School>
+                                <Button>+</Button>
+                                <Button onClick={() => this.deleteSchool(school.id)}>-</Button>
+                            </div>
+                    )})}
+                    
+                </List>
+            </div>
         )
     }
 }
@@ -43,4 +61,4 @@ const mapStateToProps = state => ({
     schools: state.schools,
 })
 
-export default connect(mapStateToProps, { schoolList })(SchoolList);
+export default connect(mapStateToProps, { schoolList, deleteSchool })(SchoolList);

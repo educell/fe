@@ -45,6 +45,18 @@ export const schoolList = () => dispatch => {
         .catch(err => console.log(err));
 }
 
+export const DELETE_SCHOOLS_START = 'DELETE_SCHOOLS_START';
+export const DELETE_SCHOOLS_SUCCESS = 'DELETE_SCHOOLS_SUCCESS';
+export const DELETE_SCHOOLS_FAILURE = 'DELETE_SCHOOLS_FAILURE';
+export const deleteSchool = id => dispatch => {
+    dispatch({ type: FETCH_SCHOOLS_START });
+    return axios.get('', id)
+        .then(res => {
+            dispatch({ type: DELETE_SCHOOLS_SUCCESS, payload: res.data })
+        })
+        .catch(err => console.log(err));
+}
+
 export const FETCH_STUDENT_START = 'FETCH_STUDENT_START';
 export const FETCH_STUDENT_SUCCESS = 'FETCH_STUDENT_SUCCESS';
 export const FETCH_STUDENT_FAILURE = 'FETCH_STUDENT_FAILURE';
@@ -114,3 +126,4 @@ export const addTeacher = info => dispatch => {
         .then(res => console.log(res))
         .catch(err => console.log(err));
 }
+
