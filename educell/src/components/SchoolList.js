@@ -27,7 +27,7 @@ class SchoolList extends React.Component {
     constructor(){
         super();
         this.state = {
-            school: '',
+            name: '',
         }
         
     }
@@ -38,7 +38,7 @@ class SchoolList extends React.Component {
 
     changeHandler = e => {
         this.setState({
-            school: e.target.value,
+            name: e.target.value,
         })
     }
 
@@ -48,8 +48,9 @@ class SchoolList extends React.Component {
 
     addSchool = e => {
         e.preventDefault();
-        this.props.addSchool(this.state.school)
+        this.props.addSchool(this.state.name)
         .then(() => this.props.history.push('/dashboard'));
+        console.log(this.state.school)
     }
 
     render(){
@@ -63,9 +64,8 @@ class SchoolList extends React.Component {
                                 <Button onClick={() => this.deleteSchool(school.id)}>-</Button>
                             </div>
                     )})}
-                    
                 </List>
-                <AddSchool changeHandler={this.changeHandler} school={this.state.school} addSchool={this.addSchool} />
+                <AddSchool changeHandler={this.changeHandler} school={this.state.name} addSchool={this.addSchool} />
             </div>
         )
     }
