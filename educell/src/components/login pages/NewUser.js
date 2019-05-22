@@ -30,7 +30,6 @@ const Items = styled.li`
     margin: 5px; 
 `
 
-
 const Blue = styled.div`
     background-color: #B8D9E5;
     width: 5%;
@@ -83,7 +82,8 @@ class NewUser extends React.Component {
     newUser = e => {
         e.preventDefault();
         this.props.signUp(this.state.userInfo)
-        .then(() => this.props.history.push('/login'));
+        .then(() => this.props.history.push('/'));
+        localStorage.removeItem('token');
     }
 
     render(){
