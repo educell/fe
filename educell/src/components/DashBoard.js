@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import StudentSearch from './StudentSearch';
+import SchoolList from './SchoolList';
 import small_logo from '../img/small_logo.svg';
 
 const Whole = styled.div`
@@ -17,6 +18,38 @@ const Left = styled.div`
 
 const Right = styled.div`
     width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+`
+
+const RightTop = styled.div`
+    display: flex;
+    margin: 20px;
+    justify-content: space-evenly;
+`
+
+const RightBot = styled.div`
+`
+
+const Student = styled.div`
+    border: 1px solid red;
+    width: 30%;
+`
+
+const School = styled.div`
+    border: 1px solid red;
+    align-self: flex-end;
+`
+
+const ToDo = styled.div`
+    border: 1px solid red;
+    width: 30%;
+`
+
+const Some = styled.div`
+    border: 1px solid red;
+    width: 30%;
 `
 
 class DashBoard extends React.Component {
@@ -53,10 +86,23 @@ class DashBoard extends React.Component {
                     </div>
                 </Left>
                 <Right>
-                    <div>
-                        <h1>DASHBOARD</h1>
-                        <StudentSearch />
-                    </div>
+                    <RightTop>
+                        <Student>
+                            <h1>DASHBOARD</h1>
+                            <StudentSearch />
+                        </Student>
+                        <ToDo>
+                            {/* todo list here if able to get to it */}
+                        </ToDo>
+                        <Some>
+                            {/* something else would go here? */}
+                        </Some>
+                    </RightTop>
+                    <RightBot>
+                        <School>
+                            <SchoolList />
+                        </School>
+                    </RightBot>
                 </Right>
             </Whole>
         )
