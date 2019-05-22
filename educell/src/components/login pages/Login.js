@@ -45,10 +45,6 @@ class Login extends React.Component {
         }
     }
 
-    componentDidMount(){
-        console.log(this.props)
-    }
-
     handleChanges = e => {
         console.log(e.target.name, e.target.value);
         this.setState({

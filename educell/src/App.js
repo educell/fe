@@ -10,8 +10,7 @@ import PrivateRoute from './components/login pages/PrivateRoute';
 import './App.css';
 
 
-function App(props) {
-  console.log(props)
+function App() {
   return (
     <div className="App">
       <Route exact path='/' component={Home} />
