@@ -59,14 +59,15 @@ const signColor = {
 }
 
 class NewUser extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             userInfo: {  
                 username: '',
                 password: '',
             }
         }
+        console.log(this.props)
     }
 
     changeHandler = e => {
@@ -81,7 +82,8 @@ class NewUser extends React.Component {
 
     newUser = e => {
         e.preventDefault();
-        this.props.signUp(this.state.userInfo);
+        this.props.signUp(this.state.userInfo)
+        .then(() => this.props.history.push('/login'));
     }
 
     render(){
