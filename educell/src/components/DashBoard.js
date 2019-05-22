@@ -35,10 +35,10 @@ const RightBot = styled.div`
 const Student = styled.div`
     border: 1px solid red;
     width: 30%;
+    height: 80vh
 `
 
 const School = styled.div`
-    border: 1px solid red;
     align-self: flex-end;
 `
 

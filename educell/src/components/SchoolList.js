@@ -1,6 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import { schoolList } from '../store/actions';
 import { connect } from 'react-redux';
+
+const List = styled.div`
+    display: flex;
+    overflow: scroll;
+`
+
+const School = styled.h1`
+    scroll-direction: horizontal;
+    font-size: 20px;
+    margin: auto 5px;
+`
 
 class SchoolList extends React.Component {
     constructor(){
@@ -18,11 +30,11 @@ class SchoolList extends React.Component {
 
     render(){
         return(
-            <div>
+            <List>
                 {this.props.schools.map(school => {
-                    return <h1 key={school.id}>{school.name}</h1>
+                    return <School key={school.id}>{school.name}</School>
                 })}
-            </div>
+            </List>
         )
     }
 }
