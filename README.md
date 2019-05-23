@@ -1,6 +1,7 @@
 # fe
 front end
 
+data from adding student, deleting student/school not available at this time
 
 ## Team Contribution
     ####programmed with the UI and the BE engineer
