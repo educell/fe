@@ -3,6 +3,7 @@ import { SIGN_UP_START, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from '../actions';
 import { FETCH_SCHOOLS_START, FETCH_SCHOOLS_SUCCESS, FETCH_SCHOOLS_FAILURE } from '../actions';
 import { FETCH_STUDENT_START, FETCH_STUDENT_SUCCESS, FETCH_STUDENT_FAILURE } from '../actions';
 import { ADD_SCHOOLS_START, ADD_SCHOOLS_SUCCESS, ADD_SCHOOLS_FAILURE } from '../actions';
+import { DELETE_SCHOOLS_START, DELETE_SCHOOLS_SUCCESS, DELETE_SCHOOLS_FAILURE } from '../actions';
 import { ADD_ITEM } from '../actions';
 
 const initialState = {
@@ -99,6 +100,22 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.payload,
+            }
+        case DELETE_SCHOOLS_START:
+            return {
+                ...state,
+                error: '',
+
+            }
+        case DELETE_SCHOOLS_SUCCESS:
+            return {
+                ...state,
+                schools: action.payload,
+            }
+        case DELETE_SCHOOLS_FAILURE:
+            return {
+                ...state,
+                error: action.payload
             }
         case FETCH_STUDENT_START:
             return {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { bindActionCreators } from '../../../../../../Library/Caches/typescript/3.4.3/node_modules/redux';
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -66,11 +67,14 @@ export const DELETE_SCHOOLS_SUCCESS = 'DELETE_SCHOOLS_SUCCESS';
 export const DELETE_SCHOOLS_FAILURE = 'DELETE_SCHOOLS_FAILURE';
 export const deleteSchool = id => dispatch => {
     dispatch({ type: DELETE_SCHOOLS_START });
-    return axios.get('', id)
+    return axios.delete(`https://edu-cell.herokuapp.com/schools/${id}`)
         .then(res => {
             dispatch({ type: DELETE_SCHOOLS_SUCCESS, payload: res.data })
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            console.log(err);
+            dispatch({ type: DELETE_SCHOOLS_FAILURE, payload: err.response })
+        });
 }
 
 export const FETCH_STUDENT_START = 'FETCH_STUDENT_START';
