@@ -13,13 +13,13 @@ const List = styled.div`
 const School = styled.h1`
     scroll-direction: horizontal;
     overflow: scroll;
-    font-size: 24px;
+    font-size: 16px;
     margin: auto 5px;
 `
 
 const Button = styled.button`
     width: 30px;
-    font-size: 20px;
+    font-size: 14px;
     margin: 5px 5px;
 `
 
@@ -29,7 +29,8 @@ class SchoolList extends React.Component {
         this.state = {
             school: {
                 name: '',
-            }
+            },
+            okToRender: false,
         }
         
     }
@@ -45,6 +46,16 @@ class SchoolList extends React.Component {
             }
         })
     }
+    
+   componentDidUpdate(prevProps){
+        if(this.props.fetchSchool !== prevProps.fetchSchool){
+            if(!this.props.fetchSchool){
+                this.setState({
+                    okToRender: true
+                })
+            }
+        }
+   }
 
     deleteSchool = id =>{
         this.props.deleteSchool(id)
@@ -58,6 +69,7 @@ class SchoolList extends React.Component {
     }
 
     render(){
+        if(!this.state.okToRender) return <div>loading...</div>;
         return(
             <div>
                 <List>
@@ -77,6 +89,7 @@ class SchoolList extends React.Component {
 
 const mapStateToProps = state => ({
     schools: state.schools,
+    fetchSchool: state.fetchSchool,
 })
 
 export default withRouter(connect(mapStateToProps, { schoolList, deleteSchool, addSchool })(SchoolList));

@@ -48,14 +48,15 @@ export const schoolList = () => dispatch => {
 export const ADD_SCHOOLS_START = 'ADD_SCHOOLS_START';
 export const ADD_SCHOOLS_SUCCESS = 'ADD_SCHOOLS_SUCCESS';
 export const ADD_SCHOOLS_FAILURE = 'ADD_SCHOOLS_FAILURE';
-export const addSchool = info => dispatch => {
+export const addSchool = school => dispatch => {
     dispatch({ type: ADD_SCHOOLS_START });
-    return axios.post('https://edu-cell.herokuapp.com/schools', info)
+    return axios.post('https://edu-cell.herokuapp.com/schools', school)
         .then(res => {
-            console.log(res);
+            console.log(res.data);
             dispatch({ type: ADD_SCHOOLS_SUCCESS, payload: res.data })
         })
         .catch(err => {
+            console.log(school);
             dispatch({ type: ADD_SCHOOLS_FAILURE, payload: err.response })
         });
 }

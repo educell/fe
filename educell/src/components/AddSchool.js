@@ -1,5 +1,12 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import styled from 'styled-components';
+
+const Form =styled.form`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+`
 
 class AddSchool extends React.Component {
   constructor(props) {
@@ -17,6 +24,14 @@ class AddSchool extends React.Component {
     }));
   }
 
+  submitToggle = e => {
+    e.preventDefault();
+    this.props.addSchool();
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }))
+  }
+
   render() {
     return (
       <div>
@@ -24,12 +39,12 @@ class AddSchool extends React.Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>New School</ModalHeader>
           <ModalBody>
-            <form onSubmit={this.props.addSchool}>
-              <input onChange={this.props.changeHandler} name="school" placeholder="Enter School Name" value={this.props.school}/>
-            </form>
+            <Form onSubmit={this.submitToggle}>
+              <input onChange={this.props.changeHandler} name="school" placeholder="Enter School Name" value={this.props.school.name}/>
+            </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.props.addSchool}>Submit</Button>{' '}
+            <Button color="secondary" onClick={this.submitToggle}>Submit</Button>{' '}
             <Button color="danger" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>

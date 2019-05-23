@@ -11,12 +11,14 @@ const initialState = {
     teachers: [],
     admins: [],
     token: '',
+    fetchSchool: false,
     isLoggedIn: false,
     isLoggingIn: false,
     error: null,
     todo: [
         {task: 'Talk To Mrs. Hoo', completed: false, id: 2},
     ],
+    okToRender: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -67,16 +69,20 @@ const reducer = (state = initialState, action) => {
         case FETCH_SCHOOLS_START:
             return {
                 ...state,
+                fetchSchool: true,
                 error: '',
+
             }
         case FETCH_SCHOOLS_SUCCESS:
             return {
                 ...state,
+                fetchSchool: false,
                 schools: action.payload,
             }
         case FETCH_SCHOOLS_FAILURE:
             return {
                 ...state,
+                fetchSchool: false,
                 error: action.payload,
             }
         case ADD_SCHOOLS_START:
@@ -87,7 +93,7 @@ const reducer = (state = initialState, action) => {
         case ADD_SCHOOLS_SUCCESS:
             return {
                 ...state,
-                schools: action.payload,
+                schools: [...state.schools, action.payload],
             }
         case ADD_SCHOOLS_FAILURE:
             return {
