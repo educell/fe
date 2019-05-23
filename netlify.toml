@@ -1,0 +1,9 @@
+[build]
+base = "educell/"
+publish = "educell/build/"
+command = "yarn build"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
