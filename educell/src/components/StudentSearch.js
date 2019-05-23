@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { studentList } from '../store/actions';
 
 class StudentSearch extends React.Component {
     constructor(){
@@ -8,6 +10,10 @@ class StudentSearch extends React.Component {
                 name: '',
             }
         }
+    }
+    
+    componentDidMount(){
+        this.props.studentList();
     }
 
     changeHandler = e => {
@@ -27,7 +33,7 @@ class StudentSearch extends React.Component {
                     <button>Enter</button>
                 </div>
                 <div>
-                    {/* map through students here */}
+                    
                 </div>
                 <div>
                     {/* .length the amount of students here */}
@@ -37,4 +43,8 @@ class StudentSearch extends React.Component {
     }
 }
 
-export default StudentSearch;
+const mapStateToProps = state => ({
+    students: state.students,
+})
+
+export default connect(mapStateToProps, { studentList })(StudentSearch);

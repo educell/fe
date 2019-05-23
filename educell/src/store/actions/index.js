@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { bindActionCreators } from '../../../../../../Library/Caches/typescript/3.4.3/node_modules/redux';
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -82,9 +81,15 @@ export const FETCH_STUDENT_SUCCESS = 'FETCH_STUDENT_SUCCESS';
 export const FETCH_STUDENT_FAILURE = 'FETCH_STUDENT_FAILURE';
 export const studentList = () => dispatch => {
     dispatch({ type: FETCH_STUDENT_START });
-    return axios.get('')
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+    return axios.get('https://edu-cell.herokuapp.com/students')
+        .then(res => {
+            console.log(res);
+            dispatch({ type: FETCH_STUDENT_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({ type: FETCH_STUDENT_FAILURE, payload: err.response })
+        });
 }
 
 export const ADD_STUDENT_START = 'ADD_STUDENT_START';
@@ -92,9 +97,15 @@ export const ADD_STUDENT_SUCCESS = 'ADD_STUDENT_SUCCESS';
 export const ADD_STUDENT_FAILURE = 'ADD_STUDENT_FAILURE';
 export const addStudent = info => dispatch => {
     dispatch({ type: ADD_STUDENT_START });
-    return axios.post('', info)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+    return axios.post('https://edu-cell.herokuapp.com/students', info)
+        .then(res => {
+            console.log(res);
+            dispatch({ type: ADD_STUDENT_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({ type: ADD_STUDENT_FAILURE, payload: err.response })
+        });
 }
 
 export const UPDATE_STUDENT_START = 'UPDATE_STUDENT_START';

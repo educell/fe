@@ -2,6 +2,7 @@ import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions';
 import { SIGN_UP_START, SIGN_UP_SUCCESS, SIGN_UP_FAILURE } from '../actions';
 import { FETCH_SCHOOLS_START, FETCH_SCHOOLS_SUCCESS, FETCH_SCHOOLS_FAILURE } from '../actions';
 import { FETCH_STUDENT_START, FETCH_STUDENT_SUCCESS, FETCH_STUDENT_FAILURE } from '../actions';
+import { ADD_STUDENT_START, ADD_STUDENT_SUCCESS, ADD_STUDENT_FAILURE } from '../actions';
 import { ADD_SCHOOLS_START, ADD_SCHOOLS_SUCCESS, ADD_SCHOOLS_FAILURE } from '../actions';
 import { DELETE_SCHOOLS_START, DELETE_SCHOOLS_SUCCESS, DELETE_SCHOOLS_FAILURE } from '../actions';
 import { ADD_ITEM } from '../actions';
@@ -128,6 +129,22 @@ const reducer = (state = initialState, action) => {
                 students: action.payload,
             }
         case FETCH_STUDENT_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+            }
+        case ADD_STUDENT_START:
+            return {
+                ...state,
+                error: '',
+                students: [],
+            }
+        case ADD_STUDENT_SUCCESS:
+            return {
+                ...state,
+                students: [...state.students, action.payload],
+            }
+        case ADD_STUDENT_FAILURE:
             return {
                 ...state,
                 error: action.payload,
