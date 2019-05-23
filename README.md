@@ -13,3 +13,5 @@ front end
 
 ## SPA-AJAX
     ####React Router used to route user form page to page without refresh. CRUD operations are used to fetch school information, add school info, login, sign-up, once student data is available, it will be used to fetch, add, and delete students.
+
+    Used View components, and stateful components in a seperate folder and labeled as such
