@@ -1,6 +1,6 @@
 [build]
-base = "educell/"
-publish = "educell/build/"
+base = "/"
+publish = "build/"
 command = "yarn build"
 
 [[redirects]]
