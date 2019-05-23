@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter, Route, Switch } from 'react-router-dom';
 
-import StudentSearch from './StudentSearch';
-import SchoolList from './SchoolList';
-import Todo from './Todo';
-import small_logo from '../img/small_logo.svg';
+import NavBar from '../view/NavBar';
+import DashHome from '../view/DashHome';
+import Students from './Students';
 
 const Whole = styled.div`
     display: flex;
@@ -24,96 +23,17 @@ const Right = styled.div`
     flex-direction: column;
 `
 
-const RightTop = styled.div`
-    display: flex;
-    margin: 20px;
-    justify-content: space-evenly;
-`
-
-const RightBot = styled.div`
-`
-
-const Student = styled.div`
-    border: 1px solid red;
-    width: 30%;
-    height: 80vh
-`
-
-const School = styled.div`
-    align-self: flex-end;
-`
-
-const ToDo = styled.div`
-    border: 1px solid red;
-    width: 30%;
-`
-
-const Some = styled.div`
-    border: 1px solid red;
-    width: 30%;
-`
-
-class DashBoard extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-
-        }
-    }
-
-    signOff = e => {
-        e.preventDefault();
-        localStorage.removeItem('token');
-        this.props.history.push('/');
-    }
-
-    render(){
-        return (
-            <Whole>
-                <Left>
-                    <div>
-                        <img src={small_logo} alt="logo" />
-                    </div>
-                    <div>
-                        <h1>User</h1>
-                        <h4 onClick={this.signOff}>Sign Out</h4>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <NavLink to="/dashboard">Home</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="">Student</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="">Notes</NavLink>
-                            </li>
-                        </ul>
-                    </div>
-                </Left>
-                <Right>
-                    <RightTop>
-                        <Student>
-                            <h1>DASHBOARD</h1>
-                            <StudentSearch />
-                        </Student>
-                        <ToDo>
-                            <Todo />
-                        </ToDo>
-                        <Some>
-                            {/* something else would go here? */}
-                        </Some>
-                    </RightTop>
-                    <RightBot>
-                        <School>
-                            <SchoolList />
-                        </School>
-                    </RightBot>
-                </Right>
-            </Whole>
-        )
-    }
+const DashBoard = () => {
+    return (
+        <div>
+            <div>
+                <Switch>
+                    <Route path='/dashboard' component={DashHome} />
+                    <Route path='/students' component={Students} />
+                </Switch>
+            </div>
+        </div>
+    )
 }
 
 export default withRouter(DashBoard);
