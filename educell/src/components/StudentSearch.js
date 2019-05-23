@@ -4,8 +4,18 @@ class StudentSearch extends React.Component {
     constructor(){
         super();
         this.state = {
-            search: '',
+            search: {
+                name: '',
+            }
         }
+    }
+
+    changeHandler = e => {
+        this.setState({
+            search: {
+                name: e.target.value,
+            }
+        })
     }
 
     render(){
@@ -13,7 +23,7 @@ class StudentSearch extends React.Component {
             <div>
                 <div>
                     <h3>SEARCH BY NAME</h3>
-                    <input />
+                    <input placeholder="Last Name" onChange={this.changeHandler} value={this.state.search.name}/>
                     <button>Enter</button>
                 </div>
                 <div>
