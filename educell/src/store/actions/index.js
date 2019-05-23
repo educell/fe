@@ -83,7 +83,6 @@ export const studentList = () => dispatch => {
     dispatch({ type: FETCH_STUDENT_START });
     return axios.get('https://edu-cell.herokuapp.com/students')
         .then(res => {
-            console.log(res);
             dispatch({ type: FETCH_STUDENT_SUCCESS, payload: res.data })
         })
         .catch(err => {
