@@ -33,10 +33,17 @@ class StudentSearch extends React.Component {
                     <button>Enter</button>
                 </div>
                 <div>
-                    
+                    {this.props.students.map(student => {
+                        return(
+                            <div key={student.id}>
+                                <h2>{student.name}</h2>
+                                <h4>age: {student.age}</h4>
+                            </div>
+                        )
+                    })}
                 </div>
                 <div>
-                    {/* .length the amount of students here */}
+                    <h4>Students: {this.props.students.length}</h4>
                 </div>
             </div>
         )
