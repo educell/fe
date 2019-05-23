@@ -43,7 +43,7 @@ class StudentSearch extends React.Component {
                     })}
                 </div>
                 <div>
-                    <h4>Students: {this.props.students.length}</h4>
+                    <h4><strong>Students: {this.props.students.length}</strong></h4>
                 </div>
             </div>
         )
