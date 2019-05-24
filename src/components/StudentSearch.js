@@ -13,7 +13,7 @@ class StudentSearch extends React.Component {
     }
     
     componentDidMount(){
-        this.props.studentList();
+        this.props.studentList(this.props.token);
     }
 
     changeHandler = e => {

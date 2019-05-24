@@ -86,8 +86,14 @@ export const FETCH_STUDENT_START = 'FETCH_STUDENT_START';
 export const FETCH_STUDENT_SUCCESS = 'FETCH_STUDENT_SUCCESS';
 export const FETCH_STUDENT_FAILURE = 'FETCH_STUDENT_FAILURE';
 export const studentList = (token) => dispatch => {
+    const token = localStorage.getItem('token');
+    const requestOptions = {
+        headers: {
+            authorization: token,
+        },
+    };
     dispatch({ type: FETCH_STUDENT_START });
-    return axios.get('https://edu-cell.herokuapp.com/students', token)
+    return axios.get('https://edu-cell.herokuapp.com/students', requestOptions)
         .then(res => {
             dispatch({ type: FETCH_STUDENT_SUCCESS, payload: res.data })
         })
