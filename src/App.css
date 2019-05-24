@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2|Roboto&display=swap');
+
+a {
+  color: #41464f;
+  text-transform: uppercase;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #707071;
+}
+
 .App {
   text-align: center;
 }
