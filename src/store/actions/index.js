@@ -36,9 +36,15 @@ export const signUp = userInfo => dispatch => {
 export const FETCH_SCHOOLS_START = 'FETCH_SCHOOLS_START';
 export const FETCH_SCHOOLS_SUCCESS = 'FETCH_SCHOOLS_SUCCESS';
 export const FETCH_SCHOOLS_FAILURE = 'FETCH_SCHOOLS_FAILURE';
-export const schoolList = () => dispatch => {
+export const schoolList = token => dispatch => {
+    const token = localStorage.getItem('token');
+    const requestOptions = {
+        headers: {
+            authorization: token,
+        },
+    };
     dispatch({ type: FETCH_SCHOOLS_START });
-    return axios.get('https://edu-cell.herokuapp.com/schools')
+    return axios.get('https://edu-cell.herokuapp.com/schools', requestOptions)
         .then(res => {
             dispatch({ type: FETCH_SCHOOLS_SUCCESS, payload: res.data })
         })
@@ -79,9 +85,9 @@ export const deleteSchool = id => dispatch => {
 export const FETCH_STUDENT_START = 'FETCH_STUDENT_START';
 export const FETCH_STUDENT_SUCCESS = 'FETCH_STUDENT_SUCCESS';
 export const FETCH_STUDENT_FAILURE = 'FETCH_STUDENT_FAILURE';
-export const studentList = () => dispatch => {
+export const studentList = (token) => dispatch => {
     dispatch({ type: FETCH_STUDENT_START });
-    return axios.get('https://edu-cell.herokuapp.com/students')
+    return axios.get('https://edu-cell.herokuapp.com/students', token)
         .then(res => {
             dispatch({ type: FETCH_STUDENT_SUCCESS, payload: res.data })
         })

@@ -36,7 +36,8 @@ class SchoolList extends React.Component {
     }
 
     componentDidMount(){
-        this.props.schoolList();
+        console.log(this.props.token)
+        this.props.schoolList(this.props.token);
     }
 
     changeHandler = e => {
@@ -90,6 +91,7 @@ class SchoolList extends React.Component {
 const mapStateToProps = state => ({
     schools: state.schools,
     fetchSchool: state.fetchSchool,
+    token: state.token,
 })
 
 export default withRouter(connect(mapStateToProps, { schoolList, deleteSchool, addSchool })(SchoolList));
