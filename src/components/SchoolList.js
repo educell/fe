@@ -36,7 +36,6 @@ class SchoolList extends React.Component {
     }
 
     componentDidMount(){
-        console.log(this.props.token)
         this.props.schoolList(this.props.token);
     }
 
