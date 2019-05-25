@@ -52,6 +52,7 @@ class StudentSearch extends React.Component {
 
 const mapStateToProps = state => ({
     students: state.students,
+    token: state.token,
 })
 
 export default connect(mapStateToProps, { studentList })(StudentSearch);
